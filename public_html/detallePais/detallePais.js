@@ -30,7 +30,7 @@ $(document).ready(function () {
                               contentHtml += "<td>< href='/detalle/' "+ pais.CountryCode + ">editar </button></td>";
                                contentHtml += "</tr>";
                          contentHtml += "</tbody>";
-                             $(".table").html(contentHtml);
+                             $("#caracteristica").html(contentHtml);
         
     }).fail(function(err){
         console.log(err);

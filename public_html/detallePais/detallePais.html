@@ -7,8 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./detallePais.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            
+    ></script>
     <script src="./detallePais.js"></script>
+    <script>
+        $(document).ready(function(){
+            var ctx = "${pageContext.request.contextPath}"
+            $("#backsaso").click(function(){
+                history.back(1);
+            })
+        })
+        </script>
+    
 </head>
 
 <body>
@@ -19,13 +30,14 @@
             <div class="div-bandera" id="bandera-div"></div>
         </div>
         <hr />
-        <a class="btn btn-primary" role="button">Regresar al Resumen</a>
+        
+        <a class="btn btn-primary" role="button" id="backsaso">Regresar al Resumen</a>
         <hr />
 
         <div>
             <div>
                 <!-- <h4 id="titulo-resumen-global">Características Socieconómicas </h4> -->
-                <table class="table">
+                <table class="table" id="caracteristica">
                 </table>
             </div>
         </div>
