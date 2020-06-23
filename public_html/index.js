@@ -1,6 +1,31 @@
 
 $(document).ready(function () {
     // TODO, consultas a las web services
+    
+    $.ajax({
+        method: "get",
+        dataType: "json",
+        crossDomain: true,
+        url: "https://api.covid19api.com/summary"
+    }).done(function(data){
+        var listaPaises = data.Countries;
+        var contentHtml = "";
+        $.each(listaPaises, function (i, pais) {
+                                contentHtml += "<tr>";
+                                contentHtml += "<td>" + (i + 1) + "</td>";
+                                contentHtml += "<td>" + pais.Country + "</td>";
+                                contentHtml += "<td>" + pais.TotalConfirmed + "</td>";
+                                contentHtml += "<td>" + pais.TotalDeaths + "</td>";
+                                contentHtml += "<td>" + pais.TotalRecovered + "</td>";
+                                contentHtml += "<td>" + pais.NewConfirmed + "</td>";
+                                contentHtml += "<td>" + pais.NewDeaths + "</td>";
+                                contentHtml += "<td>" + pais.NewRecovered + "</td>";
+                                contentHtml += "</tr>";
+                                });
+                             $("table tbody").html(contentHtml);      
+                    });
+             
+
 });
 
 // Función para hacer el sort de un array
