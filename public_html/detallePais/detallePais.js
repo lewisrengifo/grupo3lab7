@@ -3,6 +3,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
     const code = urlParams.get('code');
+    
     $.ajax({
         method: "get",
         dataType: "json",
@@ -19,10 +20,12 @@ $(document).ready(function () {
         url: "https://api.covid19api.com/total/dayone/country/"+code+"/status/confirmed"
     }).done(function(data){
         var lista = data;
+        
         var contentHtml = "";
         $.each(lista, function (i, pais) {
+            var date= pais.Date;
                                 contentHtml += "<tr>";
-                                contentHtml += "<td>" + pais.Date + "</td>";
+                                contentHtml += "<td>" +  formatDate(date)+ "</td>";
                                 contentHtml += "<td>" + pais.Cases + "</td>";
                                 contentHtml += "</tr>";
                                 });
@@ -35,4 +38,18 @@ $(document).ready(function () {
     $("#redirect-grafico").attr("href", '');
 
     // TODO: Consultas a la web service
+    
 });
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+    // TODO
+    return year+"/" +month+"/" + day;
+}
