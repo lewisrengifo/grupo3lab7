@@ -1,7 +1,11 @@
 
 $(document).ready(function () {
     // TODO, consultas a las web services
-     
+
+
+    
+ 
+
     
     $.ajax({
         method: "get",
@@ -9,15 +13,24 @@ $(document).ready(function () {
         crossDomain: true,
         url: "https://api.covid19api.com/summary"
     }).done(function(data){
+
         var date= data.Date;
         $("#newConfirmed").text(data.Global.NewConfirmed);
+
+        
+         $("#newConfirmed").text(data.Global.NewConfirmed);
+
         $("#newDeaths").text(data.Global.NewDeaths);
         $("#newRecovered").text(data.Global.NewRecovered);
         $("#totalConfirmed").text(data.Global.TotalConfirmed);
         $("#totalDeaths").text(data.Global.TotalDeaths);
         $("#totalRecovered").text(data.Global.TotalRecovered);
+
         $("#titulo-resumen-global").text("Resumen a la fecha: " +formatDate(date));
         console.log(formatDate(date));
+
+        
+
         var listaPaises = data.Countries;
         var contentHtml = "";
         $.each(listaPaises, function (i, pais) {
@@ -30,15 +43,22 @@ $(document).ready(function () {
                                 contentHtml += "<td>" + pais.NewConfirmed + "</td>";
                                 contentHtml += "<td>" + pais.NewDeaths + "</td>";
                                 contentHtml += "<td>" + pais.NewRecovered + "</td>";
+
                                 contentHtml += "<td> <a class='btn btn-primary' href='detallePais/detallePais.html?name="+ pais.Country + "&code="+ pais.CountryCode+ "&slug="+ pais.Slug +"'" +   ">Ver detalles </a></td>" ;
                                 contentHtml += "</tr>";
+
+                              
+                               contentHtml += "</tr>";
+
                                 });
                              $("#body-paises").html(contentHtml);      
                     });
              
 
 
+
     
+
 
 });
 
