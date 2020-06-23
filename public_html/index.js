@@ -31,10 +31,10 @@ $(document).ready(function () {
                                 contentHtml += "<td>" + pais.NewConfirmed + "</td>";
                                 contentHtml += "<td>" + pais.NewDeaths + "</td>";
                                 contentHtml += "<td>" + pais.NewRecovered + "</td>";
-                              
+                              contentHtml += "<td><button href='/detalle/' "+ pais.CountryCode + ">editar </button></td>";
                                contentHtml += "</tr>";
                                 });
-                             $("table tbody").html(contentHtml);      
+                             $("#body-paises").html(contentHtml);      
                     });
              
 
