@@ -50,12 +50,10 @@ $(document).ready(function () {
                                 contentHtml += "<td>" +" "+ "</td>";
 
 
+
                                 contentHtml += "<td> <a class='btn btn-primary' href='detallePais/detallePais.html?name="+ pais.Country + "&code="+ pais.CountryCode+ "&slug="+ pais.Slug +"'" +   ">Ver detalles </a></td>" ;
 
                                 contentHtml += "</tr>";
-
-                              
-                               contentHtml += "</tr>";
 
                                 });
                              $("#body-paises").html(contentHtml);      
