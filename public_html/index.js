@@ -1,6 +1,18 @@
 
 $(document).ready(function () {
     // TODO, consultas a las web services
+    $.ajax({
+        method: "GET",
+        dataType:"json",
+        url:"https://api.covid19api.com/summary"
+    }).done(function(data){
+        $("#newConfirmed").text(data.Global.NewConfirmed);
+        $("#newDeaths").text(data.Global.NewDeaths);
+        $("#newRecovered").text(data.Global.NewRecovered);
+        $("#totalConfirmed").text(data.Global.TotalConfirmed);
+        $("#totalDeaths").text(data.Global.TotalDeaths);
+        $("#totalRecovered").text(data.Global.TotalRecovered);
+    }).fail(function(err){})
 });
 
 // Función para hacer el sort de un array
