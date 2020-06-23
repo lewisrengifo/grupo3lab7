@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     // TODO, consultas a las web services
-<<<<<<< HEAD
+     
     
     $.ajax({
         method: "get",
@@ -9,6 +9,15 @@ $(document).ready(function () {
         crossDomain: true,
         url: "https://api.covid19api.com/summary"
     }).done(function(data){
+        var date= data.Date;
+        $("#newConfirmed").text(data.Global.NewConfirmed);
+        $("#newDeaths").text(data.Global.NewDeaths);
+        $("#newRecovered").text(data.Global.NewRecovered);
+        $("#totalConfirmed").text(data.Global.TotalConfirmed);
+        $("#totalDeaths").text(data.Global.TotalDeaths);
+        $("#totalRecovered").text(data.Global.TotalRecovered);
+        $("#titulo-resumen-global").text("Resumen a la fecha: " +formatDate(date));
+        console.log(formatDate(date));
         var listaPaises = data.Countries;
         var contentHtml = "";
         $.each(listaPaises, function (i, pais) {
@@ -21,27 +30,16 @@ $(document).ready(function () {
                                 contentHtml += "<td>" + pais.NewConfirmed + "</td>";
                                 contentHtml += "<td>" + pais.NewDeaths + "</td>";
                                 contentHtml += "<td>" + pais.NewRecovered + "</td>";
-                                contentHtml += "<button" +  pais.Afghanistan+ " >"  "hola</button>";
+                                contentHtml += "<td> <a class='btn btn-primary' href='detallePais/detallePais.html?name="+ pais.Country + "&code="+ pais.CountryCode+ "&slug="+ pais.Slug +"'" +   ">Ver detalles </a></td>" ;
                                 contentHtml += "</tr>";
                                 });
-                             $("table tbody").html(contentHtml);      
+                             $("#body-paises").html(contentHtml);      
                     });
              
 
-=======
-    $.ajax({
-        method: "GET",
-        dataType:"json",
-        url:"https://api.covid19api.com/summary"
-    }).done(function(data){
-        $("#newConfirmed").text(data.Global.NewConfirmed);
-        $("#newDeaths").text(data.Global.NewDeaths);
-        $("#newRecovered").text(data.Global.NewRecovered);
-        $("#totalConfirmed").text(data.Global.TotalConfirmed);
-        $("#totalDeaths").text(data.Global.TotalDeaths);
-        $("#totalRecovered").text(data.Global.TotalRecovered);
-    }).fail(function(err){})
->>>>>>> c83748749df6365999895fbd6ff01c8fd9110b40
+
+    
+
 });
 
 // Función para hacer el sort de un array
@@ -60,5 +58,5 @@ function formatDate(date) {
     if (day.length < 2)
         day = '0' + day;
     // TODO
-    return '';
+    return year+"/" +month+"/" + day;
 }
