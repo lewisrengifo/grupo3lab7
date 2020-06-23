@@ -20,6 +20,7 @@ $(document).ready(function () {
                                 contentHtml += "<td>" + pais.NewConfirmed + "</td>";
                                 contentHtml += "<td>" + pais.NewDeaths + "</td>";
                                 contentHtml += "<td>" + pais.NewRecovered + "</td>";
+                                contentHtml += "<button" +  pais.Afghanistan+ " >"  "hola</button>";
                                 contentHtml += "</tr>";
                                 });
                              $("table tbody").html(contentHtml);      
