@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
     // TODO, consultas a las web services
+<<<<<<< HEAD
     
     $.ajax({
         method: "get",
@@ -27,6 +28,20 @@ $(document).ready(function () {
                     });
              
 
+=======
+    $.ajax({
+        method: "GET",
+        dataType:"json",
+        url:"https://api.covid19api.com/summary"
+    }).done(function(data){
+        $("#newConfirmed").text(data.Global.NewConfirmed);
+        $("#newDeaths").text(data.Global.NewDeaths);
+        $("#newRecovered").text(data.Global.NewRecovered);
+        $("#totalConfirmed").text(data.Global.TotalConfirmed);
+        $("#totalDeaths").text(data.Global.TotalDeaths);
+        $("#totalRecovered").text(data.Global.TotalRecovered);
+    }).fail(function(err){})
+>>>>>>> c83748749df6365999895fbd6ff01c8fd9110b40
 });
 
 // Función para hacer el sort de un array
